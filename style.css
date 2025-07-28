@@ -1,0 +1,185 @@
+@import "https://unpkg.com/open-props" layer(design.system);
+
+@layer demo {
+  fieldset {
+    grid-template-columns:
+      var(--col-1, 1fr)
+      var(--col-2, 1fr)
+      var(--col-3, 1fr)
+      var(--col-4, 1fr)
+      var(--col-5, 1fr)
+      var(--col-6, 1fr)
+      var(--col-7, 1fr)
+      var(--col-8, 1fr)
+      var(--col-9, 1fr);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: grid-template-columns 2s var(--ease-spring-5);
+    }
+
+    &:has(label:nth-child(1) > input:checked) {
+      --col-1: 5fr;
+      --col-2: 3fr;
+    }
+    &:has(label:nth-child(2) > input:checked) {
+      --col-1: 2fr;
+      --col-2: 5fr;
+      --col-3: 2fr;
+    }
+    &:has(label:nth-child(3) > input:checked) {
+      --col-2: 2fr;
+      --col-3: 5fr;
+      --col-4: 2fr;
+    }
+    &:has(label:nth-child(4) > input:checked) {
+      --col-3: 2fr;
+      --col-4: 5fr;
+      --col-5: 2fr;
+    }
+    &:has(label:nth-child(5) > input:checked) {
+      --col-4: 2fr;
+      --col-5: 5fr;
+      --col-6: 2fr;
+    }  
+    &:has(label:nth-child(6) > input:checked) {
+      --col-5: 2fr;
+      --col-6: 5fr;
+      --col-7: 2fr;
+    }  
+    &:has(label:nth-child(7) > input:checked) {
+      --col-6: 2fr;
+      --col-7: 5fr;
+      --col-8: 2fr;
+    }  
+    &:has(label:nth-child(8) > input:checked) {
+      --col-7: 2fr;
+      --col-8: 5fr;
+      --col-9: 2fr;
+    }  
+    &:has(label:nth-child(9) > input:checked) {
+      --col-8: 3fr;
+      --col-9: 5fr;
+    }
+
+    > label img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-3);
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.7);
+    }
+
+    > label:has(input:checked) img {
+      transform: scale(1.1);
+      filter: brightness(1);
+    }
+  }
+}
+
+@layer demo.support {
+  html {
+    background: #14171E;
+    block-size: 100%;
+  }
+
+  body {
+    min-block-size: 100%;
+    display: grid;
+    place-content: center;
+    padding: var(--size-5);
+    gap: var(--size-5);
+  }
+
+  fieldset {
+    inline-size: 80vw;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: 50vh;
+    gap: var(--size-3);
+    border: none;
+
+    > label {
+      position: relative;
+      cursor: pointer;
+      border-radius: var(--radius-4);
+      overflow: hidden;
+
+      &:focus-within {
+        outline: 2px solid white;
+        outline-offset: 5px;
+      }
+
+      > input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+body {
+  text-align: center;
+  font-family: monospace;
+  padding: 80px;
+  margin: 0;
+}
+
+
+article {
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(46, 0, 250, 0.08);
+  padding: 48px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+
+article header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+
+article h1 {
+  font-size: 24px;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+
+article header p {
+  font-size: 14px;
+  color: #ffffff;
+  margin: 4px 0;
+}
+
+  .social-icons {
+      display: flex;
+      gap: 16px; /* spacing between icons */
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .icon-link {
+      display: inline-block;
+      padding: 8px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-link:hover {
+      background-color: #f0f0f0;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon-link img {
+      width: 42px;
+      height: 42px;
+      display: block;
+    }
